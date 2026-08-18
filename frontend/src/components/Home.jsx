@@ -109,7 +109,7 @@ function Home() {
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && todoCreate()}
-          className="flex-grow p-2 border rounded-l-md focus:outline-none"
+            className="p-2 border rounded-l-md focus:outline-none"
         />
         <button
           onClick={todoCreate}
