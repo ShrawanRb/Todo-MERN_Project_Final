@@ -18,7 +18,7 @@ export const register=async(req,res)=>{
     const {email,username,password}= req.body;
     //console.log(email,username,password);
     if (!email || !username || !password){
-                return res.status(400).json({message:"All fields are required"})
+                return res.status(400).json({errors:"All fields are required"})
 
     }
 const validation= userSchema.safeParse({email,username,password})

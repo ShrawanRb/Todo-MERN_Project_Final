@@ -1,12 +1,14 @@
 import Todo from "../model/todo.model.js";
 
 export const createTodo = async(req, res) => {
+    try {
     const todo=new Todo({
         text:req.body.text,
-        completed:req.body.completed
+        completed:req.body.completed,
+        user:req.user._id, //used it to associate todo with our Loged in user 
     });
 
-    try {
+    
         const newTodo= await todo.save()
         res.status(201).json({message:"Todo Created Sucessfully",newTodo});
     } catch (error) {
@@ -17,7 +19,7 @@ export const createTodo = async(req, res) => {
 
 export const getTodos=async(req,res)=>{
     try {
-        const todos=await Todo.find()
+        const todos=await Todo.find( {user:req.user._id}); //Use it to fetch todos only for logged  in peopople
          res.status(201).json({message:"Todo Fetched Sucessfully",todos});
     } catch (error) {
         console.log(error);

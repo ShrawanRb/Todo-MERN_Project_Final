@@ -13,12 +13,9 @@ function Home() {
     const fetchtodos = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:4001/todo/fetch", {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+     const response = await axios.get("http://localhost:4001/todo/fetch", {
+  withCredentials: true,
+});
         console.log(response.data.todos);
         setTodos(response.data.todos);
         setError(null);
@@ -100,7 +97,7 @@ function Home() {
   const remainingTodos = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <div className=" my-10 bg-gray-100 max-w-lg lg:max-w-xl rounded-lg shadow-lg mx-8 sm:mx-auto p-6">
+    <div className=" my-10 bg-gray-200 max-w-lg lg:max-w-xl rounded-lg shadow-lg mx-8 sm:mx-auto p-6">
       <h1 className="text-2xl font-semibold text-center">Todo App</h1>
       <div className="flex mb-4">
         <input
@@ -109,7 +106,7 @@ function Home() {
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && todoCreate()}
-            className="p-2 border rounded-l-md focus:outline-none"
+            className="flex-grow p-2 border rounded-l-md focus:outline-none"
         />
         <button
           onClick={todoCreate}
