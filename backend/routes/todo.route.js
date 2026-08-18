@@ -8,5 +8,5 @@ const router=express.Router()
 router.post("/create",createTodo);
 router.get("/fetch",getTodos);
 router.put("/update/:id",updateTodo)
-router.put("/delete/:id",deleteTodo)
+router.delete("/delete/:id", deleteTodo)
 export default router;
